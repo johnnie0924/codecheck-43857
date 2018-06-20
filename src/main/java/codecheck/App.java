@@ -42,11 +42,14 @@ public class App {
 			totalCombatList.clear();
 			for (TotalCombat o : tempTotalCombatList) {
 				totalCombatList.add(o);
-				TotalCombat hoge3 = new TotalCombat();
-				hoge3.combat = o.combat + combatSet[i];
-				hoge3.mp = o.mp + mpSet[i];
-				hoge3.num = o.num + 1;
-				totalCombatList.add(hoge3);
+
+				if (o.num < cardMax) {
+					TotalCombat hoge3 = new TotalCombat();
+					hoge3.combat = o.combat + combatSet[i];
+					hoge3.mp = o.mp + mpSet[i];
+					hoge3.num = o.num + 1;
+					totalCombatList.add(hoge3);
+				}
 			}
 		}
 
