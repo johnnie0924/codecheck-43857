@@ -4,19 +4,19 @@ import java.util.ArrayList;
 
 public class App {
 	public static void main(String[] args) {
-		int[] mpSet = new int[100];
-		int[] combatSet = new int[100];
+		long[] mpSet = new long[100];
+		long[] combatSet = new long[100];
 		ArrayList<TotalCombat> totalCombatList = new ArrayList<TotalCombat>();
-		int cardMax = 0;
-		int mp = 0;
-		int temp = 0;
-		int cardnum = 0;
+		long cardMax = 0;
+		long mp = 0;
+		long temp = 0;
+		long cardnum = 0;
 
 		String ar[] = args[0].split(" ");
 
 		for (int i = 0, l = ar.length; i < l; i++) {
 			temp = 0;
-			temp = Integer.parseInt(ar[i]);
+			temp = Long.parseLong(ar[i]);
 
 			if (i == 0) {
 				cardMax = temp;
