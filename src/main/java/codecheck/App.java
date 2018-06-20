@@ -4,12 +4,16 @@ import java.util.ArrayList;
 
 public class App {
 	public static void main(String[] args) {
-		int[] mpSet = null;
-		int[] combatSet = null;
+		int[] mpSet = new int[100];
+		int[] combatSet = new int[100];
 		ArrayList<TotalCombat> totalCombatList = new ArrayList<TotalCombat>();
 		int cardMax = 0;
 		int mp = 0;
 		int temp = 0;
+		int cardnum = 0;
+
+
+
 		for (int i = 0, l = args.length; i < l; i++) {
 			temp = 0;
 			temp = Integer.parseInt(args[i]);
@@ -19,9 +23,10 @@ public class App {
 			}else if(i == 1) {
 				mp = temp;
 			}else if(i % 2 == 1) {
-				mpSet[i/2]=temp;
+				mpSet[(i-2)/2]=temp;
 			}else {
-				combatSet[i/2]=temp;
+				combatSet[(i-1)/2]=temp;
+				cardnum =(i-1)/2 + 1;
 			}
 		}
 
@@ -32,7 +37,7 @@ public class App {
 		hoge2.mp = hoge2.mp + mpSet[0];
 		hoge2.num = hoge2.num + 1;
 		totalCombatList.add(hoge2);
-		for(int i=1; i<combatSet.length;i++) {
+		for(int i=1; i<cardnum;i++) {
 			ArrayList<TotalCombat> tempTotalCombatList = new ArrayList<TotalCombat>(totalCombatList);
 			totalCombatList.clear();
 			for(TotalCombat o : tempTotalCombatList) {
@@ -47,7 +52,7 @@ public class App {
 
 		long maxCombat = 0;
 		for(TotalCombat o : totalCombatList) {
-			if(o.combat > maxCombat && o.num <= cardMax) {
+			if(o.combat > maxCombat && o.num <= cardMax && o.mp <= mp) {
 				maxCombat = o.combat;
 			}
 		}
