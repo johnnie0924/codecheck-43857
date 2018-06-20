@@ -12,21 +12,21 @@ public class App {
 		int temp = 0;
 		int cardnum = 0;
 
+		String ar[] = args[0].split(" ");
 
-
-		for (int i = 0, l = args.length; i < l; i++) {
+		for (int i = 0, l = ar.length; i < l; i++) {
 			temp = 0;
-			temp = Integer.parseInt(args[i]);
+			temp = Integer.parseInt(ar[i]);
 
-			if(i == 0) {
+			if (i == 0) {
 				cardMax = temp;
-			}else if(i == 1) {
+			} else if (i == 1) {
 				mp = temp;
-			}else if(i % 2 == 1) {
-				mpSet[(i-2)/2]=temp;
-			}else {
-				combatSet[(i-1)/2]=temp;
-				cardnum =(i-1)/2 + 1;
+			} else if (i % 2 == 1) {
+				mpSet[(i - 2) / 2] = temp;
+			} else {
+				combatSet[(i - 1) / 2] = temp;
+				cardnum = (i - 1) / 2 + 1;
 			}
 		}
 
@@ -37,10 +37,10 @@ public class App {
 		hoge2.mp = hoge2.mp + mpSet[0];
 		hoge2.num = hoge2.num + 1;
 		totalCombatList.add(hoge2);
-		for(int i=1; i<cardnum;i++) {
+		for (int i = 1; i < cardnum; i++) {
 			ArrayList<TotalCombat> tempTotalCombatList = new ArrayList<TotalCombat>(totalCombatList);
 			totalCombatList.clear();
-			for(TotalCombat o : tempTotalCombatList) {
+			for (TotalCombat o : tempTotalCombatList) {
 				totalCombatList.add(o);
 				TotalCombat hoge3 = new TotalCombat();
 				hoge3.combat = o.combat + combatSet[i];
@@ -51,8 +51,8 @@ public class App {
 		}
 
 		long maxCombat = 0;
-		for(TotalCombat o : totalCombatList) {
-			if(o.combat > maxCombat && o.num <= cardMax && o.mp <= mp) {
+		for (TotalCombat o : totalCombatList) {
+			if (o.combat > maxCombat && o.num <= cardMax && o.mp <= mp) {
 				maxCombat = o.combat;
 			}
 		}
